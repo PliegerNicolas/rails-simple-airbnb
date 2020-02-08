@@ -24,6 +24,7 @@ class FlatsController < ApplicationController
   end
 
   def edit
+    set_flat
   end
 
   def show
@@ -54,7 +55,7 @@ class FlatsController < ApplicationController
       :price_per_night,
       :number_of_guests,
       :image
-      )
+    )
   end
 
   def query_search(query)
