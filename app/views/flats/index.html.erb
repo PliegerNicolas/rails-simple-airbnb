@@ -1,17 +1,42 @@
 <div class="page">
   <div class="navbar">
-    <h1>Oui</h1>
+    <p class="navbar-title navbar-item">False AirBnB flats</p>
+ <!-- make search functionnal -->
+    <p class="navbar-new navbar-item"><%= link_to 'Add Flat', new_flat_path %></p>
   </div>
 
   <div class="page-content">
+    <p>All our flats (<%= @flats.count %>)</p>
     <ul id="flats-list">
       <% @flats.each do |flat| %>
-        <li class="flat">
-          <%= flat.name %>
-          <%= flat.address %>
-          <i class="fas fa-user-friends"></i> <%= flat.number_of_guests %>
-          <i class="fas fa-euro-sign"></i> <%= flat.price_per_night %>
-        </li>
+      <li class="flat">
+        <div class="image-box">
+          <%= image_tag("#{flat.image}", :alt => "feed image", class: "flat-img") %>
+        </div>
+        <div class="flat-info-box">
+          <div class="flat-name"><%= flat.name %></div>
+          <div class="flat-address"><%= flat.address %></div>
+          <div class="flat-details">
+            <div class="flat-people">
+              <i class="fas fa-user-friends"></i>
+              <p><%= flat.number_of_guests %>
+              </p>
+            </div>
+            <div class="flat-price">
+              <i class="fas fa-euro-sign"></i>
+              <p><%= flat.price_per_night %></p>
+            </div>
+          </div>
+        </div>
+        <div class="links">
+          <%= link_to 'More info', flat_path(flat.id), class: "flat-link flat-link-info" %>
+          <%= link_to 'Edit', edit_flat_path(flat.id), class: "flat-link flat-link-edit" %>
+          <%= link_to 'Remove', flat_path(flat.id),
+          method: :delete,
+          data: { confirm: "Delete #{flat.name}?"},
+          class: "flat-link flat-link-remove" %>
+        </div>
+      </li>
       <% end %>
     </ul>
   </div>

@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}

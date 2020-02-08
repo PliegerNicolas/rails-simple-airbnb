@@ -1,0 +1,100 @@
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    flex-wrap : wrap;
+    #flats-list {
+      list-style-type: none;
+    }
+  }
+
+  .flat {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px 5px;
+    box-shadow: 0px 2px 5px 2px rgba(50,50,50,0.32);
+    height: 400px;
+    width: 340px;
+    justify-content: space-between;
+  }
+
+  .flat-name {
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+  .flat-address {
+    font-size: 18px;
+  }
+
+  .flat-details {
+    display: flex;
+    flex-direction: row;
+    align-items: flet-end;
+    font-size: 18px;
+    justify-content: flex-start;
+  }
+
+  .flat-people {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .flat-price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .fas {
+    margin: 0px 8px;
+  }
+/* LINK */
+
+.links {
+  background-color: white;
+  width: 100%;
+  height: 16%;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  justify-content: flex-begin;
+  align-items: center;
+}
+
+.flat-link {
+  text-decoration: none;
+  font-size: 18px;
+  margin-left: 6%;
+}
+
+.flat-link-info {
+  color: blue;
+}
+
+.flat-link-remove {
+  color: red;
+}
+.flat-link-edit {
+  color: yellow;
+}
+
+.image-box {
+  background-color: gray;
+  height: 200px;
+  border-radius: 5px 5px 0 0;
+}
+
+.flat-info-box {
+  height: 160px;
+}
+
+.flat-img {
+  height: 100%;
+  width: 100%;
+}
