@@ -1,12 +1,22 @@
+require 'byebug'
+
 class FlatsController < ApplicationController
   def index
-    @flats = Flat.all
+    if params[:query].present?
+      query = params[:query]
+      query_search(query)
+    else
+      @flats = Flat.all
+    end
   end
 
   def create
-    flat = Flat.new(flat_params)
-    flat.save
-    redirect_to flats_path
+    @flat = Flat.new(flat_params)
+    if @flat.save
+      redirect_to flats_path
+    else
+      render :new
+    end
   end
 
   def new
@@ -30,10 +40,6 @@ class FlatsController < ApplicationController
     redirect_to flats_path
   end
 
-  def search
-    # ongoing work
-  end
-
   private
 
   def set_flat
@@ -46,7 +52,13 @@ class FlatsController < ApplicationController
       :address,
       :description,
       :price_per_night,
-      :number_of_guests
-    )
+      :number_of_guests,
+      :image
+      )
+  end
+
+  def query_search(query)
+    @query = query
+    @flats = Flat.where("name Like '%#{query}%'")
   end
 end

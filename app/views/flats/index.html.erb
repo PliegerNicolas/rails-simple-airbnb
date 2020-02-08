@@ -1,12 +1,19 @@
 <div class="page">
   <div class="navbar">
-    <p class="navbar-title navbar-item">False AirBnB flats</p>
- <!-- make search functionnal -->
+    <p class="navbar-title navbar-item">False AirBnB</p>
+    <%= simple_form_for :search, url: flats_path, method: "get" do |f| %>
+    <%= f.text_field :query, name: "query", value: @query %>
+    <%= f.submit "Search", name: nil %>
+    <% end %>
     <p class="navbar-new navbar-item"><%= link_to 'Add Flat', new_flat_path %></p>
   </div>
 
   <div class="page-content">
-    <p>All our flats (<%= @flats.count %>)</p>
+    <% if @query %>
+    <p>You searched for <strong><%= @query %></strong>. We found <%= @flats.count %> flats out of our <%= Flat.count %> on our website.</p>
+    <% else %>
+    <p>All <%= Flat.count %> flats.</p>
+    <% end %>
     <ul id="flats-list">
       <% @flats.each do |flat| %>
       <li class="flat">
